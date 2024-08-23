@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Recommendation System</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            padding-top: 56px;
+            background-color: #b0b8c1;
+        }
+        .jumbotron {
+            background-color: #fff;
+            padding: 4rem 1rem;
+            text-align: center;
+            color: #333;
+        }
+        .jumbotron img {
+            width: 100%;
+            height: auto;
+            max-height: 400px; /* Adjust the height as needed */
+            object-fit: cover; /* Ensure image covers the container */
+            margin-bottom: 1rem; /* Space below the image */
+}
+        .jumbotron h1 {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        .jumbotron p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+        }
+        .navbar {
+            background-color: #343a40;
+        }
+        .navbar-brand, .nav-link {
+            color: #fff;
+        }
+        .navbar-brand {
+            font-size: 1.5rem;
+        }
+        .navbar-nav .nav-item {
+            margin-left: 1rem;
+        }
+        .nav-link:hover {
+            color: #f8f9fa;
+        }
+        .book-card {
+            margin: 1rem 2rem 1rem 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border: none;
+            background-color: #5a6268;
+        }
+        .book-card img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+        }
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-align: center;
+        }
+        .card-text {
+            font-size: 0.9rem;
+            color: #555;
+        }
+        .footer {
+            background-color: #343a40;
+            color: #fff;
+            padding: 2rem 0;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Book Recs</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/recom">Recommender</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Jumbotron Header -->
+    <header class="jumbotron">
+        <div class="container">
+            <img src="../static/bg_image.jpg">
+            <h1 class="display-4">BOOK SHELF</h1>
+            <p class="lead">Get personalized book recommendations tailored to your taste.</p>
+        </div>
+    </header>
+
+    <!-- Page Content -->
+    <div class="container">
+        <div class="text-center my-4">
+            <h2>TOP 50 Books</h2>
+            <h3>You should read</h3>
+        </div>
+        <div class="row">
+            <!-- Example of a book card -->
+            {% for i in range(names|length) %}
+            <div class="col-lg-2 col-md-4 col-sm-6 book-card">
+                <div class="card">
+                    <img src="{{ image[i] }}" class="card-img-top" alt="Book Cover">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ names[i] }}</h5>
+                        <p class="card-text">{{ author[i] }}</p>
+                        <p class="card-text">Votes: {{ votes[i] }}</p>
+                        <p class="card-text">Rating: {{ rating[i] }}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p class="m-0">&copy; 2024 Book Recs. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS and dependencies -->
+<!--    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>-->
+<!--    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>-->
+<!--    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>-->
+</body>
+</html>
